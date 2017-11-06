@@ -1,0 +1,12 @@
+﻿@model Hospital.Models.Doctor
+@{
+    ViewBag.Title = "Sign Up";
+}
+
+@using (Html.BeginForm("SignUpDoctor", "Hospital", FormMethod.Post))
+{
+    <input type="hidden" name="IsDoctor" checked value="true" />
+            @Html.EditorForModel()
+            <p></p>
+            <p><input type="submit" value="Send" /></p>
+}

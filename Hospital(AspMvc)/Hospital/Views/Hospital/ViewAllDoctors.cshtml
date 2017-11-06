@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Hospital.Models.Doctor>
+@{
+    ViewBag.Title = "View All Doctors";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialization)
+            </td>
+        </tr>
+    }
+</table>
+@using (Html.BeginForm("ViewDoctorsByName", "Hospital", FormMethod.Post))
+{
+    <div>
+        <p>
+            <h4>Find a doctor</h4>
+        </p>
+    </div>
+            <div>
+                @Html.Label("Doctor's name")
+                @Html.Editor("doctorName")
+                <input type="submit" value="Find" />
+            </div>
+}

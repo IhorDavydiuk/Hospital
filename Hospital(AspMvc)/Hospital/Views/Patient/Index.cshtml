@@ -1,0 +1,51 @@
+﻿@model Hospital.Models.Patient
+@using Hospital.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <p>
+        <h4>
+            <span><b>@Html.DisplayNameFor(model => model.Name)</b>:</span>
+            <span>@Html.DisplayFor(model => model.Name)</span>
+            <span><b>@Html.DisplayNameFor(model => model.OutpatientCard)</b>:</span>
+            <span>@Html.DisplayFor(model => model.OutpatientCard)</span>
+        </h4>
+    </p>
+    <h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List of doctors
+    </h3>
+    <table class="table">
+        <tr>
+            <td>@Html.DisplayName("Name")</td>
+            <td>@Html.DisplayName("Specialization")</td>
+            <td>@Html.DisplayName("Illness")</td>
+            <td>@Html.DisplayName("Deskription")</td>
+            <td>@Html.DisplayName("Status")</td>
+        </tr>
+        @foreach (Doctor item in ViewBag.Doctors)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialization)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Sickness.First(sick => sick.DoctorId == item.Id).Illness)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Sickness.First(sick => sick.DoctorId == item.Id).Deskription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Sickness.First(sick => sick.DoctorId == item.Id).Status)
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Details Patient", "DetailsPatient", new { id = Model.Id })
+</div>

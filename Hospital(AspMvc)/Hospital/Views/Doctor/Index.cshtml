@@ -1,0 +1,69 @@
+﻿@model Hospital.Models.Doctor
+@using Hospital.Models
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <p>
+        <h4>
+            <span><b>@Html.DisplayNameFor(model => model.Name)</b>: @Model.Name</span>
+        </h4>
+    </p>
+    <p>
+        <h4>
+            <span><b>@Html.DisplayNameFor(model => model.Specialization)</b>: @Model.Specialization</span>
+        </h4>
+    </p>
+</div>
+<div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = Model.Id })
+    </p>
+</div>
+@using (Html.BeginForm("FindAPatient", "Doctor", FormMethod.Post))
+{
+    <p>
+        <h4>Find a patient</h4>
+    </p>
+
+    @Html.Label("Patient's name")
+    @Html.Editor("patientName")
+    @Html.HiddenFor(model=>model.Id)
+    <input type="submit" value="Find" />
+
+}
+
+@Html.ActionLink("Create Disease Record", "CreateDiseaseRecord", new { id = Model.Id })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Amount Patient")
+        </th>
+        <th>
+            @Html.DisplayName("Amount Sick")
+        </th>
+        <th>
+            @Html.DisplayName("Amount Arrived")
+        </th>
+        <th>
+            @Html.DisplayName("Amount Healthy")
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Patients.Count)
+        </td>
+        <td>
+            @ViewBag.Sick
+
+        <td>
+            @ViewBag.Arrived
+        </td>
+        <td>
+            @ViewBag.Healthy
+        </td>
+
+    </tr>
+</table>
+

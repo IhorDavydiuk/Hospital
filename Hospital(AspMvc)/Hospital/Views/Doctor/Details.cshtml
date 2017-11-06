@@ -1,0 +1,62 @@
+﻿@model Hospital.Models.Doctor
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Details</h2>
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+   
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Specialization)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patients)
+        </dt>
+        <dd>
+            <ul>
+                @foreach (var patient in Model.Patients)
+                {
+                    <li>
+                        <p><b>Name:</b> @patient.Name</p>
+                        <p><b>OutpatientCard:</b> @patient.OutpatientCard</p>
+                        <p>
+                            <b>Helthy:</b>
+                            @foreach (var item in patient.Sickness)
+                            {
+                              @item.Illness<span>,</span>
+                            }
+                        </p>
+                    </li>
+
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index", new { id = Model.Id })
+</p>

@@ -1,0 +1,12 @@
+﻿@model Hospital.Models.InputData
+
+@{
+    ViewBag.Title = "Sign In";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Send" />
+}
+

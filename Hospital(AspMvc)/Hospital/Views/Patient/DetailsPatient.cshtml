@@ -1,0 +1,35 @@
+﻿@model Hospital.Models.Patient
+
+@{
+    ViewBag.Title = "Details Patient";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OutpatientCard)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OutpatientCard)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+</div>
